@@ -1,3 +1,4 @@
+import 'package:art_bid/screens/view_all_screens/trending_artists_screen.dart';
 import 'package:art_bid/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,10 @@ class TrendingArtistSection extends StatelessWidget {
               style: titleStyle,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed(TrendingArtistsScreen.routeName);
+              },
               child: Text(
                 "View All",
                 style: labelStyle,

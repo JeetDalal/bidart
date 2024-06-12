@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:art_bid/screens/home_screen/widgets/popular_art_card_widget.dart';
 import 'package:art_bid/utils/constants.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/list_layout_card_widget.dart';
 
 enum DisplayOptions { list, grid }
 
@@ -14,10 +17,12 @@ class ViewAllPopularArtwork extends StatefulWidget {
 
 class _ViewAllPopularArtworkState extends State<ViewAllPopularArtwork> {
   DisplayOptions displayOption = DisplayOptions.grid;
+  var visText = "Abstract face woman";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -113,10 +118,70 @@ class _ViewAllPopularArtworkState extends State<ViewAllPopularArtwork> {
                     ),
                   ),
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              displayOption == DisplayOptions.grid
+                  ? GridLayoutWidget()
+                  : ListLayoutWidget(visText: visText)
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class GridLayoutWidget extends StatelessWidget {
+  const GridLayoutWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 5,
+          childAspectRatio: 0.5,
+        ),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return PopularArtCardWidget();
+        },
+      ),
+    );
+  }
+}
+
+class ListLayoutWidget extends StatelessWidget {
+  const ListLayoutWidget({
+    super.key,
+    required this.visText,
+  });
+
+  final String visText;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+              bottom: 10,
+            ),
+            child: ListLayoutCardWidget(visText: visText),
+          );
+        },
       ),
     );
   }

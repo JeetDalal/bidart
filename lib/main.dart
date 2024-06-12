@@ -1,13 +1,14 @@
 import 'package:art_bid/provider/form_detail_provider.dart';
+import 'package:art_bid/screens/artist_details_screen/artists_details_screen.dart';
 import 'package:art_bid/screens/home_screen/home_screen.dart';
 import 'package:art_bid/screens/screen_controller/screen_controller.dart';
-import 'package:art_bid/screens/splash_screen.dart';
+// import 'package:art_bid/screens/splash_screen.dart';
+import 'package:art_bid/screens/view_all_screens/trending_artists_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/post_auth_screens/form_screen_controller.dart';
-import 'screens/post_auth_screens/sign_in_screen.dart';
+// import 'screens/post_auth_screens/form_screen_controller.dart';
+// import 'screens/post_auth_screens/sign_in_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,9 +28,11 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: MainScreenController(),
+        home: ArtistsDetailsScreen(),
         routes: {
           HomeScreen.routeName: (context) => const HomeScreen(),
+          TrendingArtistsScreen.routeName: (context) => TrendingArtistsScreen(),
+          ArtistsDetailsScreen.routeName: (context) => ArtistsDetailsScreen(),
         },
       ),
     );
