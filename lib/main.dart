@@ -1,5 +1,6 @@
 import 'package:art_bid/provider/form_detail_provider.dart';
 import 'package:art_bid/screens/home_screen/home_screen.dart';
+import 'package:art_bid/screens/screen_controller/screen_controller.dart';
 import 'package:art_bid/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: MainScreenController(),
         routes: {
           HomeScreen.routeName: (context) => const HomeScreen(),
         },

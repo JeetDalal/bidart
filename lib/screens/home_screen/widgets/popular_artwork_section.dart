@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:art_bid/screens/home_screen/widgets/popular_art_card_widget.dart';
+import 'package:art_bid/screens/view_all_screens/view_popular_artwork.dart';
 import 'package:art_bid/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,10 @@ class PopularArtworkSection extends StatelessWidget {
               style: titleStyle,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ViewAllPopularArtwork()));
+              },
               child: Text(
                 "View All",
                 style: labelStyle,

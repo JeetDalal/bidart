@@ -106,9 +106,6 @@ class HomeScreen extends StatelessWidget {
                   height: 20,
                 ),
                 PopularArtworkSection(),
-                const SizedBox(
-                  height: 20,
-                ),
                 TrendingArtistSection(),
               ],
             ),
