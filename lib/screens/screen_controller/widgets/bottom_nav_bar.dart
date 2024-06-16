@@ -1,3 +1,4 @@
+import 'package:art_bid/screens/screen_controller/screen_controller.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -5,9 +6,9 @@ class BottomNavBar extends StatefulWidget {
   _BottomNavBarState createState() => _BottomNavBarState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedIndex = 0;
+int selectedIndex = 0;
 
+class _BottomNavBarState extends State<BottomNavBar> {
   // static const List<Widget> _widgetOptions = <Widget>[
   //   Text(
   //     'Home',
@@ -28,8 +29,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
   // ];
 
   void _onItemTapped(int index) {
+    pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 300), curve: Curves.decelerate);
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -42,26 +45,25 @@ class _BottomNavBarState extends State<BottomNavBar> {
       selectedIconTheme: IconThemeData(color: Colors.black),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(_selectedIndex == 0 ? Icons.home : Icons.home_outlined),
+          icon: Icon(selectedIndex == 0 ? Icons.home : Icons.home_outlined),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon:
-              Icon(_selectedIndex == 1 ? Icons.search : Icons.search_outlined),
+          icon: Icon(selectedIndex == 1 ? Icons.search : Icons.search_outlined),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(_selectedIndex == 2
+          icon: Icon(selectedIndex == 2
               ? Icons.notifications
               : Icons.notifications_outlined),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(_selectedIndex == 3 ? Icons.person : Icons.person_outline),
+          icon: Icon(selectedIndex == 3 ? Icons.person : Icons.person_outline),
           label: '',
         ),
       ],
-      currentIndex: _selectedIndex,
+      currentIndex: selectedIndex,
       selectedItemColor: Colors.blue,
       onTap: _onItemTapped,
     );

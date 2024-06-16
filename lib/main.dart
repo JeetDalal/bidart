@@ -1,7 +1,9 @@
 import 'package:art_bid/provider/form_detail_provider.dart';
 import 'package:art_bid/screens/artist_details_screen/artists_details_screen.dart';
 import 'package:art_bid/screens/home_screen/home_screen.dart';
+import 'package:art_bid/screens/inbox_screen/inbox_screen.dart';
 import 'package:art_bid/screens/screen_controller/screen_controller.dart';
+import 'package:art_bid/screens/search_screen/search_screen.dart';
 // import 'package:art_bid/screens/splash_screen.dart';
 import 'package:art_bid/screens/view_all_screens/trending_artists_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,11 +30,12 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: ArtistsDetailsScreen(),
+        home: MainScreenController(),
         routes: {
           HomeScreen.routeName: (context) => const HomeScreen(),
           TrendingArtistsScreen.routeName: (context) => TrendingArtistsScreen(),
           ArtistsDetailsScreen.routeName: (context) => ArtistsDetailsScreen(),
+          InboxScreen.routeName: (context) => InboxScreen()
         },
       ),
     );

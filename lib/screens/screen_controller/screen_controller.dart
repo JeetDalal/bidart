@@ -1,23 +1,33 @@
 import 'package:art_bid/screens/home_screen/home_screen.dart';
+import 'package:art_bid/screens/inbox_screen/inbox_screen.dart';
+import 'package:art_bid/screens/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/bottom_nav_bar.dart';
 
 class MainScreenController extends StatefulWidget {
-  const MainScreenController({super.key});
+  MainScreenController({super.key});
 
   @override
   State<MainScreenController> createState() => _MainScreenControllerState();
 }
 
+PageController pageController = PageController();
+
 class _MainScreenControllerState extends State<MainScreenController> {
-  List<Widget> _pages = [HomeScreen()];
+  List<Widget> _pages = [HomeScreen(), SearchScreen(), InboxScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavBar(),
       body: PageView.builder(
-        itemCount: 4,
+        onPageChanged: (value) {
+          setState(() {
+            selectedIndex = value;
+          });
+        },
+        controller: pageController,
+        itemCount: _pages.length,
         itemBuilder: (context, index) {
           return _pages[index];
         },
