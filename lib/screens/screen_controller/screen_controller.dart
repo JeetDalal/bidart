@@ -1,5 +1,6 @@
 import 'package:art_bid/screens/home_screen/home_screen.dart';
 import 'package:art_bid/screens/inbox_screen/inbox_screen.dart';
+import 'package:art_bid/screens/profile_screen/profile_screen.dart';
 import 'package:art_bid/screens/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,12 @@ class MainScreenController extends StatefulWidget {
 PageController pageController = PageController();
 
 class _MainScreenControllerState extends State<MainScreenController> {
-  List<Widget> _pages = [HomeScreen(), SearchScreen(), InboxScreen()];
+  List<Widget> _pages = [
+    HomeScreen(),
+    SearchScreen(),
+    InboxScreen(),
+    ProfileScreen()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
