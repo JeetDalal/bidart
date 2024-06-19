@@ -2,7 +2,9 @@ import 'package:art_bid/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
+  final listItems = ['My Work', 'Wishlist', 'Setting Account', 'Payment'];
 
   @override
   Widget build(BuildContext context) {
@@ -133,14 +135,51 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              Row(
-                children: [
-                  Text(
-                    "My Work",
-                    style: titleStyle.copyWith(fontSize: 20),
-                  )
-                ],
-              )
+              Column(
+                children: List.generate(listItems.length, (index) {
+                  return Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            listItems[index],
+                            style: titleStyle.copyWith(fontSize: 20),
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.arrow_forward_ios,
+                                color: primaryColor,
+                              ))
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: const Divider(),
+                      ),
+                    ],
+                  );
+                }),
+              ),
+              const SizedBox(
+                height: 180,
+              ),
+              Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: primaryColor,
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'Logout',
+                    style: titleStyle.copyWith(fontSize: 18),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
